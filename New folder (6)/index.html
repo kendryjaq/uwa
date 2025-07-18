@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Annoying Dog Sound Loop with Custom Cursor</title>
+  <style>
+    body {
+      margin: 0;
+      background-color: #000;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      gap: 20px;
+      font-family: Arial, sans-serif;
+
+      cursor: url('https://files.catbox.moe/yrwlqn.png') 16 16, auto;
+    }
+
+    img {
+      width: 600px;
+      cursor: pointer;
+      transition: transform 0.2s;
+    }
+
+    img:hover {
+      transform: scale(1.05);
+    }
+
+    button {
+      padding: 10px 20px;
+      font-size: 18px;
+      cursor: pointer;
+      border: none;
+      border-radius: 8px;
+      background-color: #222;
+      color: white;
+      transition: background-color 0.2s;
+    }
+
+    button:hover {
+      background-color: #555;
+    }
+  </style>
+</head>
+<body>
+  <img src="https://files.catbox.moe/thy2es.webp" alt="Annoying Dog" id="dog" />
+  <button id="pauseBtn">Pause</button>
+
+  <audio id="sound" src="https://files.catbox.moe/it96kl.mp3" loop></audio>
+
+  <script>
+    const dog = document.getElementById('dog');
+    const sound = document.getElementById('sound');
+    const pauseBtn = document.getElementById('pauseBtn');
+
+    dog.addEventListener('click', () => {
+      if (sound.paused) {
+        sound.currentTime = 0;
+        sound.play();
+      }
+    });
+
+    pauseBtn.addEventListener('click', () => {
+      if (!sound.paused) {
+        sound.pause();
+      }
+    });
+  </script>
+</body>
+</html>
